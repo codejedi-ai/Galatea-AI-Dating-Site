@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ===== GALATEA DESIGN TOKENS ===== */
-/* Light = warm ivory/rose/earth (commit 391538a)  Dark = black/gray/teal (current) */
+/* Light = warm ivory/rose/earth  Dark = black/gray/teal */
 
 :root {
   /* --- Light theme base colors (RGB channels for opacity support) --- */
@@ -15,6 +15,7 @@
   --g-surface-alt: #e5d9c9;
   --g-border: #d3c1a8;
   --g-text: #342b18;
+  --g-heading: #5c3d1e;
   --g-muted: #7a5f36;
   --g-subtle: #9d7945;
   --g-accent: #e11d48;
@@ -23,26 +24,39 @@
   --g-footer: #e5d9c9;
   --g-input-bg: #fefaf4;
   --g-input-border: #d3c1a8;
+  --g-card-bg: #fdf6ed;
+  --g-card-border: #d3c1a8;
   --g-loading-bg: #fff8f0;
+  --g-loading-track: #fde8ed;
   --g-loading-accent: #e11d48;
   --g-loading-accent-2: #be123c;
   --g-card-hover-border: rgba(225, 29, 72, 0.3);
+  --g-accent-tint: rgba(225, 29, 72, 0.1);
+  --g-danger: #dc2626;
+  --g-danger-hover: #b91c1c;
+  --g-danger-tint: rgba(220, 38, 38, 0.1);
+  --g-error-bg: rgba(220, 38, 38, 0.1);
+  --g-error-border: rgba(220, 38, 38, 0.5);
+  --g-error-text: #dc2626;
+  --g-success-bg: rgba(22, 163, 74, 0.1);
+  --g-success-border: rgba(22, 163, 74, 0.5);
+  --g-success-text: #15803d;
 
   /* --- Light theme gradients --- */
   --g-gradient-page: linear-gradient(135deg, #fffff0, #fff1f2, #e5d9c9);
   --g-gradient-cta: linear-gradient(to right, #c1a987, #e5d9c9);
   --g-gradient-hero: linear-gradient(
     to right,
-    rgb(254 250 244 / 0.95),
-    rgb(254 250 244 / 0.7),
-    transparent
+    rgb(254 250 244 / 0.97),
+    rgb(254 250 244 / 0.85),
+    rgb(254 250 244 / 0.4)
   );
   --g-gradient-card: linear-gradient(to top, #e5d9c9, transparent, transparent);
 
   /* --- Shadcn/ui compatibility vars --- */
   --background: 36 33% 97%;
   --foreground: 24 6% 15%;
-  --card: 36 33% 97%;
+  --card: 40 60% 97%;
   --card-foreground: 24 6% 15%;
   --popover: 36 33% 97%;
   --popover-foreground: 24 6% 15%;
@@ -56,8 +70,8 @@
   --accent-foreground: 24 6% 15%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 36 33% 97%;
-  --border: 33 23% 83%;
-  --input: 33 23% 83%;
+  --border: 33 23% 80%;
+  --input: 33 23% 80%;
   --ring: 0 59% 51%;
   --radius: 0.5rem;
   --sidebar-background: 36 33% 97%;
@@ -80,6 +94,7 @@
   --g-surface-alt: #0a0c10;
   --g-border: #1a1d24;
   --g-text: #ffffff;
+  --g-heading: #ffffff;
   --g-muted: #d1d5db;
   --g-subtle: #9ca3af;
   --g-accent: #00c4f0;
@@ -88,10 +103,23 @@
   --g-footer: #0a0c10;
   --g-input-bg: #111318;
   --g-input-border: #1a1d24;
+  --g-card-bg: #111318;
+  --g-card-border: #1a1d24;
   --g-loading-bg: #0a1520;
+  --g-loading-track: #0a2535;
   --g-loading-accent: #2de2e6;
   --g-loading-accent-2: #0d92ba;
   --g-card-hover-border: rgba(0, 196, 240, 0.3);
+  --g-accent-tint: rgba(0, 196, 240, 0.1);
+  --g-danger: #ef4444;
+  --g-danger-hover: #dc2626;
+  --g-danger-tint: rgba(239, 68, 68, 0.1);
+  --g-error-bg: rgba(220, 38, 38, 0.12);
+  --g-error-border: rgba(220, 38, 38, 0.4);
+  --g-error-text: #f87171;
+  --g-success-bg: rgba(22, 163, 74, 0.12);
+  --g-success-border: rgba(22, 163, 74, 0.4);
+  --g-success-text: #4ade80;
 
   /* --- Dark theme gradients --- */
   --g-gradient-page: #000000;
@@ -107,7 +135,7 @@
   /* --- Shadcn/ui compatibility vars --- */
   --background: 0 0% 3.9%;
   --foreground: 0 0% 98%;
-  --card: 0 0% 3.9%;
+  --card: 0 0% 7%;
   --card-foreground: 0 0% 98%;
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 98%;
@@ -171,9 +199,17 @@
     background-color: var(--g-accent-hover);
   }
 
+  .g-bg-card {
+    background-color: var(--g-card-bg);
+  }
+
   /* Theme-aware text color utilities */
   .g-text-primary {
     color: var(--g-text);
+  }
+
+  .g-text-heading {
+    color: var(--g-heading);
   }
 
   .g-text-muted {
@@ -195,6 +231,10 @@
   /* Theme-aware border utilities */
   .g-border-color {
     border-color: var(--g-border);
+  }
+
+  .g-border-card {
+    border-color: var(--g-card-border);
   }
 
   .g-border-accent {
@@ -233,5 +273,96 @@
 
   .hover\:border-g-accent-glow:hover {
     border-color: var(--g-card-hover-border);
+  }
+
+  /* Status message utilities */
+  .g-bg-error {
+    background-color: var(--g-error-bg);
+  }
+  .g-border-error {
+    border-color: var(--g-error-border);
+  }
+  .g-text-error {
+    color: var(--g-error-text);
+  }
+  .g-bg-success {
+    background-color: var(--g-success-bg);
+  }
+  .g-border-success {
+    border-color: var(--g-success-border);
+  }
+  .g-text-success {
+    color: var(--g-success-text);
+  }
+  .g-bg-footer-gradient {
+    background: linear-gradient(to top, var(--g-surface-alt), transparent);
+  }
+
+  /* Loading screen utilities */
+  .g-bg-loading {
+    background-color: var(--g-loading-bg);
+  }
+  .g-text-loading-accent {
+    color: var(--g-loading-accent);
+  }
+  .g-border-loading-accent {
+    border-color: var(--g-loading-accent);
+  }
+  .g-border-loading-accent-2 {
+    border-color: var(--g-loading-accent-2);
+  }
+  .g-bg-loading-track {
+    background-color: var(--g-loading-track);
+  }
+  .g-bg-loading-bar {
+    background: linear-gradient(to right, var(--g-loading-accent), var(--g-loading-accent-2));
+  }
+  .g-bg-loading-shimmer {
+    background: linear-gradient(to right, var(--g-loading-bg), var(--g-loading-accent), var(--g-loading-bg));
+  }
+
+  /* Danger / destructive */
+  .g-text-danger {
+    color: var(--g-danger);
+  }
+  .g-border-danger {
+    border-color: var(--g-danger);
+  }
+  .g-border-danger-faded {
+    border-color: color-mix(in srgb, var(--g-danger) 50%, transparent);
+  }
+  .hover\:g-bg-danger-tint:hover {
+    background-color: var(--g-danger-tint);
+  }
+  .hover\:g-text-danger-hover:hover {
+    color: var(--g-danger-hover);
+  }
+
+  /* Accent tint / interactive states */
+  .hover\:g-bg-accent-tint:hover {
+    background-color: var(--g-accent-tint);
+  }
+  .group:hover .companion-card-btn {
+    background-color: var(--g-accent);
+    color: var(--g-accent-text);
+  }
+  .hover\:g-border-card-hover:hover {
+    border-color: var(--g-card-hover-border);
+  }
+  /* Checkbox checked accent */
+  .g-checkbox[data-state="checked"] {
+    background-color: var(--g-accent);
+    border-color: var(--g-accent);
+  }
+
+  /* Nav scrolled background */
+  .g-bg-nav-scrolled {
+    background-color: rgb(var(--g-nav-rgb) / 0.6);
+  }
+  .g-bg-nav-mobile {
+    background-color: rgb(var(--g-nav-rgb) / 0.9);
+  }
+  .g-bg-page-faded {
+    background-color: rgb(var(--g-page-rgb) / 0.2);
   }
 }

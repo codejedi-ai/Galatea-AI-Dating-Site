@@ -4,7 +4,7 @@ import type React from "react";
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { SparklesIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
+import { Sparkles as SparklesIcon, Heart as HeartIcon, ShieldCheck as ShieldCheckIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -91,14 +91,14 @@ export default function Home() {
               alt="AI Companion"
               fill
               style={{ objectFit: "cover", objectPosition: "center" }}
-              className="opacity-30"
+              className="opacity-40"
             />
-            <div className="absolute inset-0 bg-black/30 dark:bg-black/60"></div>
+            <div className="absolute inset-0 g-hero-overlay"></div>
           </div>
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 g-text-heading">
                 Friends <span className="g-text-accent">Wanted</span>
               </h1>
               <p className="text-xl md:text-2xl g-text-muted mb-10">
@@ -130,7 +130,7 @@ export default function Home() {
                       : "opacity-0 translate-y-4"
                   }`}
                 >
-                  <span className="g-text-primary">
+                  <span className="g-text-heading">
                     {heroMessages[currentMessageIndex].first}
                   </span>{" "}
                   <span className="g-text-accent">
@@ -149,7 +149,7 @@ export default function Home() {
         {/* Features Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               Level Up Your <span className="g-text-accent">Social Game</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-10">
@@ -175,7 +175,7 @@ export default function Home() {
         {/* Showcase Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               Meet Your{" "}
               <span className="g-text-accent">Confidence Coaches</span>
             </h2>
@@ -203,7 +203,7 @@ export default function Home() {
         {/* Process Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               How It <span className="g-text-accent">Works</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -233,7 +233,7 @@ export default function Home() {
                   style={{ objectFit: "cover" }}
                   className="rounded-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div className="absolute inset-0 g-card-overlay"></div>
               </div>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default function Home() {
         {/* CTA Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-4xl font-bold mb-8 g-text-heading">
               Ready to <span className="g-text-accent">Make Friends</span>?
             </h2>
             <p className="text-xl g-text-muted mb-10 max-w-2xl mx-auto">
@@ -271,105 +271,42 @@ export default function Home() {
                   alt="Galatea.AI Logo"
                   width={30}
                   height={30}
-                  className="filter brightness-0 invert"
+                  className="filter brightness-0 dark:invert"
                 />
-                <span className="text-xl font-bold text-white">
-                  Galatea<span className="text-teal-400">.AI</span>
+                <span className="text-xl font-bold g-text-heading">
+                  Galatea<span className="g-text-accent">.AI</span>
                 </span>
               </Link>
-              <p className="text-gray-400">
+              <p className="g-text-muted">
                 Your AI wingman for building confidence and making real friends.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Company</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/careers"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Blog
-                  </Link>
-                </li>
+                <li><Link href="/about" className="g-text-muted hover:g-text-accent transition-colors">About Us</Link></li>
+                <li><Link href="/careers" className="g-text-muted hover:g-text-accent transition-colors">Careers</Link></li>
+                <li><Link href="/blog" className="g-text-muted hover:g-text-accent transition-colors">Blog</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Resources</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/help"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/faq"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/community"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Community
-                  </Link>
-                </li>
+                <li><Link href="/help" className="g-text-muted hover:g-text-accent transition-colors">Help Center</Link></li>
+                <li><Link href="/faq" className="g-text-muted hover:g-text-accent transition-colors">FAQ</Link></li>
+                <li><Link href="/community" className="g-text-muted hover:g-text-accent transition-colors">Community</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Legal</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-gray-400 hover:text-teal-400"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
+                <li><Link href="/privacy" className="g-text-muted hover:g-text-accent transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="g-text-muted hover:g-text-accent transition-colors">Terms of Service</Link></li>
+                <li><Link href="/contact" className="g-text-muted hover:g-text-accent transition-colors">Contact Us</Link></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <div className="border-t g-border-color mt-12 pt-8 text-center g-text-muted">
             © 2024 Galatea.AI. All rights reserved.
           </div>
         </div>
@@ -388,12 +325,12 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 transition-transform hover:scale-105 hover:border-teal-500/30">
+    <div className="g-bg-card border g-border-card rounded-lg p-8 transition-transform hover:scale-105 hover:g-border-card-hover">
       <div className="flex justify-center mb-6">{icon}</div>
-      <h3 className="text-2xl font-semibold text-white mb-4 text-center">
+      <h3 className="text-2xl font-semibold g-text-heading mb-4 text-center">
         {title}
       </h3>
-      <p className="text-gray-300 text-center">{description}</p>
+      <p className="g-text-muted text-center">{description}</p>
     </div>
   );
 }
@@ -408,7 +345,7 @@ function CompanionCard({
   description: string;
 }) {
   return (
-    <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden transition-transform hover:scale-105 hover:border-teal-500/30 group">
+    <div className="g-bg-card border g-border-card rounded-lg overflow-hidden transition-transform hover:scale-105 hover:g-border-card-hover group">
       <div className="relative h-80">
         <Image
           src={image || "/placeholder.svg"}
@@ -416,12 +353,12 @@ function CompanionCard({
           fill
           style={{ objectFit: "cover", objectPosition: "top" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 g-card-overlay"></div>
       </div>
       <div className="p-6">
-        <h3 className="text-2xl font-semibold text-white mb-2">{name}</h3>
-        <p className="text-gray-300">{description}</p>
-        <Button className="mt-4 w-full bg-transparent border border-teal-500 text-teal-400 hover:bg-teal-500/10 group-hover:bg-teal-500 group-hover:text-black transition-all duration-300">
+        <h3 className="text-2xl font-semibold g-text-heading mb-2">{name}</h3>
+        <p className="g-text-muted">{description}</p>
+        <Button className="companion-card-btn mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:g-bg-accent-tint transition-all duration-300">
           Start Practicing with {name}
         </Button>
       </div>

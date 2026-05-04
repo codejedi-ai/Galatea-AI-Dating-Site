@@ -24,14 +24,14 @@ export function Logo({ size = "medium", showText = true, className = "" }: LogoP
           alt="Galatea.AI Logo"
           width={dimension}
           height={dimension}
-          className="filter brightness-0 invert"
+          className="filter brightness-0 dark:invert"
         />
       </div>
       {showText && (
         <span
-          className={`font-bold text-white ${size === "large" ? "text-3xl" : size === "small" ? "text-lg" : "text-2xl"}`}
+          className={`font-bold g-text-heading ${size === "large" ? "text-3xl" : size === "small" ? "text-lg" : "text-2xl"}`}
         >
-          Galatea<span className="text-teal-400">.AI</span>
+          Galatea<span className="g-text-accent">.AI</span>
         </span>
       )}
     </Link>
