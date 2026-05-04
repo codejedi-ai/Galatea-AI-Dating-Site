@@ -19,7 +19,13 @@ export function Logo({ size = "medium", showText = true, className = "" }: LogoP
   return (
     <Link href="/" className={`flex items-center space-x-2 ${className}`}>
       <div className="relative">
-        <Image src="/favicon-white.png" alt="Galatea.AI Logo" width={dimension} height={dimension} />
+        <Image
+          src="/favicon.png"
+          alt="Galatea.AI Logo"
+          width={dimension}
+          height={dimension}
+          className="filter brightness-0 invert"
+        />
       </div>
       {showText && (
         <span
