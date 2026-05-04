@@ -118,13 +118,13 @@ export default function Profile() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen g-bg-page g-text-primary">
         <Navbar />
 
         <main className="container mx-auto px-6 pt-24 pb-16">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-8">
-              <div className="h-24 w-24 rounded-full overflow-hidden bg-gray-800 mx-auto mb-4 flex items-center justify-center">
+              <div className="h-24 w-24 rounded-full overflow-hidden g-bg-card mx-auto mb-4 flex items-center justify-center border g-border-card">
                 {currentUser?.user_metadata?.avatar_url ? (
                   <Image
                     src={currentUser.user_metadata.avatar_url}
@@ -134,11 +134,11 @@ export default function Profile() {
                     className="object-cover"
                   />
                 ) : (
-                  <UserIcon className="h-12 w-12 text-gray-400" />
+                  <UserIcon className="h-12 w-12 g-text-subtle" />
                 )}
               </div>
-              <h1 className="text-3xl font-bold">Profile Settings</h1>
-              <p className="text-gray-400 mt-2">{currentUser?.email}</p>
+              <h1 className="text-3xl font-bold g-text-primary">Profile Settings</h1>
+              <p className="g-text-muted mt-2">{currentUser?.email}</p>
             </div>
 
             {error && (
@@ -149,19 +149,19 @@ export default function Profile() {
             )}
 
             {successMessage && (
-              <div className="bg-green-500/10 border border-green-500/50 text-green-400 px-4 py-3 rounded-md mb-6 flex items-center gap-2">
+              <div className="bg-green-500/10 border border-green-500/50 text-green-600 dark:text-green-400 px-4 py-3 rounded-md mb-6 flex items-center gap-2">
                 <CheckCircleIcon size={20} />
                 <span>{successMessage}</span>
               </div>
             )}
 
-            <div className="flex space-x-1 mb-8 bg-gray-900 p-1 rounded-lg">
+            <div className="flex space-x-1 mb-8 g-bg-card p-1 rounded-lg border g-border-card">
               <button
                 onClick={() => setActiveTab("profile")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   activeTab === "profile"
-                    ? "bg-teal-500 text-black"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
+                    ? "g-bg-accent g-text-accent-text"
+                    : "g-text-muted hover:g-text-primary hover:g-bg-surface"
                 }`}
               >
                 <UserIcon className="inline-block w-4 h-4 mr-2" />
@@ -171,8 +171,8 @@ export default function Profile() {
                 onClick={() => setActiveTab("security")}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   activeTab === "security"
-                    ? "bg-teal-500 text-black"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
+                    ? "g-bg-accent g-text-accent-text"
+                    : "g-text-muted hover:g-text-primary hover:g-bg-surface"
                 }`}
               >
                 <KeyIcon className="inline-block w-4 h-4 mr-2" />
@@ -182,38 +182,38 @@ export default function Profile() {
 
             <div className="grid gap-6">
               {activeTab === "profile" && (
-                <Card className="bg-gray-900 border-gray-800">
+                <Card className="g-bg-card border g-border-card">
                   <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
+                    <CardTitle className="g-text-primary flex items-center gap-2">
                       <UserIcon className="h-5 w-5" />
                       Profile Information
                     </CardTitle>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="g-text-muted">
                       Update your display name and email address.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleUpdateProfile} className="space-y-6">
                       <div className="space-y-2">
-                        <Label htmlFor="displayName" className="text-white">Display Name</Label>
+                        <Label htmlFor="displayName" className="g-text-primary">Display Name</Label>
                         <Input
                           id="displayName"
                           type="text"
                           value={displayName}
                           onChange={(e) => setDisplayName(e.target.value)}
-                          className="bg-gray-800 border-gray-700 focus:border-teal-500 text-white"
+                          className="g-input-bg g-input-border g-text-primary"
                           placeholder="Enter your display name"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-white">Email Address</Label>
+                        <Label htmlFor="email" className="g-text-primary">Email Address</Label>
                         <Input
                           id="email"
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="bg-gray-800 border-gray-700 focus:border-teal-500 text-white"
+                          className="g-input-bg g-input-border g-text-primary"
                           placeholder="Enter your email"
                         />
                       </div>
@@ -221,7 +221,7 @@ export default function Profile() {
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="bg-teal-500 text-black hover:bg-teal-400"
+                        className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover"
                       >
                         {isLoading ? "Updating..." : "Update Profile"}
                       </Button>
@@ -231,34 +231,34 @@ export default function Profile() {
               )}
 
               {activeTab === "security" && (
-                <Card className="bg-gray-900 border-gray-800">
+                <Card className="g-bg-card border g-border-card">
                   <CardHeader>
-                    <CardTitle className="text-white flex items-center gap-2">
+                    <CardTitle className="g-text-primary flex items-center gap-2">
                       <KeyIcon className="h-5 w-5" />
                       Change Password
                     </CardTitle>
-                    <CardDescription className="text-gray-400">
+                    <CardDescription className="g-text-muted">
                       Set a new password for your account.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleUpdatePassword} className="space-y-6">
                       <div className="space-y-2">
-                        <Label htmlFor="newPassword" className="text-white">New Password</Label>
+                        <Label htmlFor="newPassword" className="g-text-primary">New Password</Label>
                         <div className="relative">
                           <Input
                             id="newPassword"
                             type={showNewPassword ? "text" : "password"}
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
-                            className="bg-gray-800 border-gray-700 focus:border-teal-500 text-white pr-10"
+                            className="g-input-bg g-input-border g-text-primary pr-10"
                             placeholder="Enter new password"
                             required
                           />
                           <button
                             type="button"
                             onClick={() => setShowNewPassword(!showNewPassword)}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 g-text-subtle hover:g-text-primary"
                           >
                             {showNewPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
                           </button>
@@ -266,21 +266,21 @@ export default function Profile() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="confirmPassword" className="text-white">Confirm New Password</Label>
+                        <Label htmlFor="confirmPassword" className="g-text-primary">Confirm New Password</Label>
                         <div className="relative">
                           <Input
                             id="confirmPassword"
                             type={showConfirmPassword ? "text" : "password"}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="bg-gray-800 border-gray-700 focus:border-teal-500 text-white pr-10"
+                            className="g-input-bg g-input-border g-text-primary pr-10"
                             placeholder="Confirm new password"
                             required
                           />
                           <button
                             type="button"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 g-text-subtle hover:g-text-primary"
                           >
                             {showConfirmPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
                           </button>
@@ -290,7 +290,7 @@ export default function Profile() {
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="bg-teal-500 text-black hover:bg-teal-400"
+                        className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover"
                       >
                         {isLoading ? "Updating..." : "Update Password"}
                       </Button>
@@ -299,10 +299,10 @@ export default function Profile() {
                 </Card>
               )}
 
-              <Card className="bg-gray-900 border-red-500/50">
+              <Card className="g-bg-card border border-red-500/50">
                 <CardHeader>
-                  <CardTitle className="text-red-400">Danger Zone</CardTitle>
-                  <CardDescription className="text-gray-400">
+                  <CardTitle className="text-red-500">Danger Zone</CardTitle>
+                  <CardDescription className="g-text-muted">
                     Actions that affect your account permanently.
                   </CardDescription>
                 </CardHeader>
@@ -310,7 +310,7 @@ export default function Profile() {
                   <Button
                     variant="ghost"
                     onClick={handleLogout}
-                    className="text-gray-300 hover:text-teal-400 hover:bg-black/20"
+                    className="g-text-muted hover:g-text-accent hover:bg-transparent"
                   >
                     <LogOut size={18} className="mr-2" />
                     Sign Out

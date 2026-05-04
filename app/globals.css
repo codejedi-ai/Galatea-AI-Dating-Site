@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ===== GALATEA DESIGN TOKENS ===== */
-/* Light = warm ivory/rose/earth (commit 391538a)  Dark = black/gray/teal (current) */
+/* Light = warm ivory/rose/earth  Dark = black/gray/teal */
 
 :root {
   /* --- Light theme base colors (RGB channels for opacity support) --- */
@@ -23,6 +23,8 @@
   --g-footer: #e5d9c9;
   --g-input-bg: #fefaf4;
   --g-input-border: #d3c1a8;
+  --g-card-bg: #fdf6ed;
+  --g-card-border: #d3c1a8;
   --g-loading-bg: #fff8f0;
   --g-loading-accent: #e11d48;
   --g-loading-accent-2: #be123c;
@@ -33,16 +35,16 @@
   --g-gradient-cta: linear-gradient(to right, #c1a987, #e5d9c9);
   --g-gradient-hero: linear-gradient(
     to right,
-    rgb(254 250 244 / 0.95),
-    rgb(254 250 244 / 0.7),
-    transparent
+    rgb(254 250 244 / 0.97),
+    rgb(254 250 244 / 0.85),
+    rgb(254 250 244 / 0.4)
   );
   --g-gradient-card: linear-gradient(to top, #e5d9c9, transparent, transparent);
 
   /* --- Shadcn/ui compatibility vars --- */
   --background: 36 33% 97%;
   --foreground: 24 6% 15%;
-  --card: 36 33% 97%;
+  --card: 40 60% 97%;
   --card-foreground: 24 6% 15%;
   --popover: 36 33% 97%;
   --popover-foreground: 24 6% 15%;
@@ -56,8 +58,8 @@
   --accent-foreground: 24 6% 15%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 36 33% 97%;
-  --border: 33 23% 83%;
-  --input: 33 23% 83%;
+  --border: 33 23% 80%;
+  --input: 33 23% 80%;
   --ring: 0 59% 51%;
   --radius: 0.5rem;
   --sidebar-background: 36 33% 97%;
@@ -88,6 +90,8 @@
   --g-footer: #0a0c10;
   --g-input-bg: #111318;
   --g-input-border: #1a1d24;
+  --g-card-bg: #111318;
+  --g-card-border: #1a1d24;
   --g-loading-bg: #0a1520;
   --g-loading-accent: #2de2e6;
   --g-loading-accent-2: #0d92ba;
@@ -107,7 +111,7 @@
   /* --- Shadcn/ui compatibility vars --- */
   --background: 0 0% 3.9%;
   --foreground: 0 0% 98%;
-  --card: 0 0% 3.9%;
+  --card: 0 0% 7%;
   --card-foreground: 0 0% 98%;
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 98%;
@@ -171,6 +175,10 @@
     background-color: var(--g-accent-hover);
   }
 
+  .g-bg-card {
+    background-color: var(--g-card-bg);
+  }
+
   /* Theme-aware text color utilities */
   .g-text-primary {
     color: var(--g-text);
@@ -195,6 +203,10 @@
   /* Theme-aware border utilities */
   .g-border-color {
     border-color: var(--g-border);
+  }
+
+  .g-border-card {
+    border-color: var(--g-card-border);
   }
 
   .g-border-accent {

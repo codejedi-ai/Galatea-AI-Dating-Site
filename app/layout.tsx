@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
 import { AuthProvider } from "@/contexts/auth-context"
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <AuthProvider>
-            {children}
+            <Suspense>
+              {children}
+            </Suspense>
             <Analytics />
           </AuthProvider>
         </ThemeProvider>
