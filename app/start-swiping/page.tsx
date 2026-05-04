@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Suspense, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
@@ -23,7 +23,7 @@ interface SwipeDecision {
   [uuid: string]: "accepted" | "rejected"
 }
 
-export default function StartSwiping() {
+function StartSwipingContent() {
   const [profiles, setProfiles] = useState<AIProfile[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [decisions, setDecisions] = useState<SwipeDecision>({})
@@ -70,10 +70,8 @@ export default function StartSwiping() {
     const currentProfile = profiles[currentIndex]
     setDecisions((prev) => ({ ...prev, [currentProfile.uuid]: decision }))
 
-    // Set swipe animation direction
     setSwipeDirection(decision === "accepted" ? "right" : "left")
 
-    // Wait for animation to complete before changing index
     setTimeout(() => {
       setSwipeDirection(null)
       if (currentIndex < profiles.length - 1) {
@@ -88,18 +86,10 @@ export default function StartSwiping() {
     try {
       const response = await fetch("/api/submit-decisions", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(decisions),
       })
-
-      if (!response.ok) {
-        throw new Error("Failed to submit decisions")
-      }
-
-      // Handle successful submission (e.g., show results or redirect)
-      console.log("Decisions submitted successfully")
+      if (!response.ok) throw new Error("Failed to submit decisions")
     } catch (err) {
       setError("Failed to submit decisions. Please try again.")
     }
@@ -218,5 +208,13 @@ export default function StartSwiping() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function StartSwiping() {
+  return (
+    <Suspense fallback={<LoadingScreen message="Loading your matches..." />}>
+      <StartSwipingContent />
+    </Suspense>
   )
 }
