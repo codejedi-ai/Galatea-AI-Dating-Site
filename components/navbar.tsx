@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Suspense, useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
@@ -8,7 +8,7 @@ import { Menu, X, User, Sun, Moon } from "lucide-react"
 import { useAuth } from "@/contexts/auth-context"
 import { useTheme } from "next-themes"
 
-export function Navbar() {
+function NavbarContent() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -120,5 +120,13 @@ export function Navbar() {
         </div>
       )}
     </header>
+  )
+}
+
+export function Navbar() {
+  return (
+    <Suspense fallback={<header className="fixed top-0 left-0 right-0 z-50 h-16" />}>
+      <NavbarContent />
+    </Suspense>
   )
 }
