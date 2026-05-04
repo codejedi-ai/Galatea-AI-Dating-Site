@@ -142,14 +142,14 @@ export default function Profile() {
             </div>
 
             {error && (
-              <div className="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-3 rounded-md mb-6 flex items-center gap-2">
+              <div className="g-bg-error border g-border-error g-text-error px-4 py-3 rounded-md mb-6 flex items-center gap-2">
                 <AlertCircleIcon size={20} />
                 <span>{error}</span>
               </div>
             )}
 
             {successMessage && (
-              <div className="bg-green-500/10 border border-green-500/50 text-green-600 dark:text-green-400 px-4 py-3 rounded-md mb-6 flex items-center gap-2">
+              <div className="g-bg-success border g-border-success g-text-success px-4 py-3 rounded-md mb-6 flex items-center gap-2">
                 <CheckCircleIcon size={20} />
                 <span>{successMessage}</span>
               </div>

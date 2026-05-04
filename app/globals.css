@@ -30,6 +30,12 @@
   --g-loading-accent: #e11d48;
   --g-loading-accent-2: #be123c;
   --g-card-hover-border: rgba(225, 29, 72, 0.3);
+  --g-error-bg: rgba(220, 38, 38, 0.1);
+  --g-error-border: rgba(220, 38, 38, 0.5);
+  --g-error-text: #dc2626;
+  --g-success-bg: rgba(22, 163, 74, 0.1);
+  --g-success-border: rgba(22, 163, 74, 0.5);
+  --g-success-text: #15803d;
 
   /* --- Light theme gradients --- */
   --g-gradient-page: linear-gradient(135deg, #fffff0, #fff1f2, #e5d9c9);
@@ -98,6 +104,12 @@
   --g-loading-accent: #2de2e6;
   --g-loading-accent-2: #0d92ba;
   --g-card-hover-border: rgba(0, 196, 240, 0.3);
+  --g-error-bg: rgba(220, 38, 38, 0.12);
+  --g-error-border: rgba(220, 38, 38, 0.4);
+  --g-error-text: #f87171;
+  --g-success-bg: rgba(22, 163, 74, 0.12);
+  --g-success-border: rgba(22, 163, 74, 0.4);
+  --g-success-text: #4ade80;
 
   /* --- Dark theme gradients --- */
   --g-gradient-page: #000000;
@@ -251,5 +263,28 @@
 
   .hover\:border-g-accent-glow:hover {
     border-color: var(--g-card-hover-border);
+  }
+
+  /* Status message utilities */
+  .g-bg-error {
+    background-color: var(--g-error-bg);
+  }
+  .g-border-error {
+    border-color: var(--g-error-border);
+  }
+  .g-text-error {
+    color: var(--g-error-text);
+  }
+  .g-bg-success {
+    background-color: var(--g-success-bg);
+  }
+  .g-border-success {
+    border-color: var(--g-success-border);
+  }
+  .g-text-success {
+    color: var(--g-success-text);
+  }
+  .g-bg-footer-gradient {
+    background: linear-gradient(to top, var(--g-surface-alt), transparent);
   }
 }
