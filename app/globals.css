@@ -15,6 +15,7 @@
   --g-surface-alt: #e5d9c9;
   --g-border: #d3c1a8;
   --g-text: #342b18;
+  --g-heading: #5c3d1e;
   --g-muted: #7a5f36;
   --g-subtle: #9d7945;
   --g-accent: #e11d48;
@@ -82,6 +83,7 @@
   --g-surface-alt: #0a0c10;
   --g-border: #1a1d24;
   --g-text: #ffffff;
+  --g-heading: #ffffff;
   --g-muted: #d1d5db;
   --g-subtle: #9ca3af;
   --g-accent: #00c4f0;
@@ -182,6 +184,10 @@
   /* Theme-aware text color utilities */
   .g-text-primary {
     color: var(--g-text);
+  }
+
+  .g-text-heading {
+    color: var(--g-heading);
   }
 
   .g-text-muted {

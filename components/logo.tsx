@@ -29,7 +29,7 @@ export function Logo({ size = "medium", showText = true, className = "" }: LogoP
       </div>
       {showText && (
         <span
-          className={`font-bold g-text-primary ${size === "large" ? "text-3xl" : size === "small" ? "text-lg" : "text-2xl"}`}
+          className={`font-bold g-text-heading ${size === "large" ? "text-3xl" : size === "small" ? "text-lg" : "text-2xl"}`}
         >
           Galatea<span className="g-text-accent">.AI</span>
         </span>

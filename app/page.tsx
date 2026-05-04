@@ -98,7 +98,7 @@ export default function Home() {
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 g-text-heading">
                 Friends <span className="g-text-accent">Wanted</span>
               </h1>
               <p className="text-xl md:text-2xl g-text-muted mb-10">
@@ -130,7 +130,7 @@ export default function Home() {
                       : "opacity-0 translate-y-4"
                   }`}
                 >
-                  <span className="g-text-primary">
+                  <span className="g-text-heading">
                     {heroMessages[currentMessageIndex].first}
                   </span>{" "}
                   <span className="g-text-accent">
@@ -149,7 +149,7 @@ export default function Home() {
         {/* Features Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               Level Up Your <span className="g-text-accent">Social Game</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-10">
@@ -175,7 +175,7 @@ export default function Home() {
         {/* Showcase Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               Meet Your{" "}
               <span className="g-text-accent">Confidence Coaches</span>
             </h2>
@@ -203,7 +203,7 @@ export default function Home() {
         {/* Process Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
-            <h2 className="text-4xl font-bold text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 g-text-heading">
               How It <span className="g-text-accent">Works</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -242,7 +242,7 @@ export default function Home() {
         {/* CTA Section */}
         <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">
+            <h2 className="text-4xl font-bold mb-8 g-text-heading">
               Ready to <span className="g-text-accent">Make Friends</span>?
             </h2>
             <p className="text-xl g-text-muted mb-10 max-w-2xl mx-auto">
@@ -273,7 +273,7 @@ export default function Home() {
                   height={30}
                   className="filter brightness-0 dark:invert"
                 />
-                <span className="text-xl font-bold g-text-primary">
+                <span className="text-xl font-bold g-text-heading">
                   Galatea<span className="g-text-accent">.AI</span>
                 </span>
               </Link>
@@ -282,7 +282,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 g-text-primary">Company</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Company</h3>
               <ul className="space-y-2">
                 <li><Link href="/about" className="g-text-muted hover:g-text-accent transition-colors">About Us</Link></li>
                 <li><Link href="/careers" className="g-text-muted hover:g-text-accent transition-colors">Careers</Link></li>
@@ -290,7 +290,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 g-text-primary">Resources</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Resources</h3>
               <ul className="space-y-2">
                 <li><Link href="/help" className="g-text-muted hover:g-text-accent transition-colors">Help Center</Link></li>
                 <li><Link href="/faq" className="g-text-muted hover:g-text-accent transition-colors">FAQ</Link></li>
@@ -298,7 +298,7 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4 g-text-primary">Legal</h3>
+              <h3 className="text-lg font-semibold mb-4 g-text-heading">Legal</h3>
               <ul className="space-y-2">
                 <li><Link href="/privacy" className="g-text-muted hover:g-text-accent transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="g-text-muted hover:g-text-accent transition-colors">Terms of Service</Link></li>
@@ -327,7 +327,7 @@ function FeatureCard({
   return (
     <div className="g-bg-card border g-border-card rounded-lg p-8 transition-transform hover:scale-105 hover:border-[var(--g-card-hover-border)]">
       <div className="flex justify-center mb-6">{icon}</div>
-      <h3 className="text-2xl font-semibold g-text-primary mb-4 text-center">
+      <h3 className="text-2xl font-semibold g-text-heading mb-4 text-center">
         {title}
       </h3>
       <p className="g-text-muted text-center">{description}</p>
@@ -356,7 +356,7 @@ function CompanionCard({
         <div className="absolute inset-0 g-card-overlay"></div>
       </div>
       <div className="p-6">
-        <h3 className="text-2xl font-semibold g-text-primary mb-2">{name}</h3>
+        <h3 className="text-2xl font-semibold g-text-heading mb-2">{name}</h3>
         <p className="g-text-muted">{description}</p>
         <Button className="mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:bg-[var(--g-accent)]/10 group-hover:bg-[var(--g-accent)] group-hover:text-[var(--g-accent-text)] transition-all duration-300">
           Start Practicing with {name}
