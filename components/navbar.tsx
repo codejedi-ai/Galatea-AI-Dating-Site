@@ -63,7 +63,7 @@ export function Navbar() {
               className="flex items-center space-x-2 text-g-muted hover:text-g-accent transition-colors p-2 rounded-md hover:bg-g-page/20"
             >
               <User size={18} />
-              <span className="text-sm">{currentUser.displayName || currentUser.email}</span>
+              <span className="text-sm">{currentUser.user_metadata?.full_name || currentUser.email}</span>
             </Link>
           ) : (
             <>
@@ -103,7 +103,7 @@ export function Navbar() {
               {currentUser ? (
                 <Link href="/profile" className="flex items-center space-x-2 text-g-muted hover:text-g-accent transition-colors py-2 px-2 rounded-md hover:bg-g-surface" onClick={() => setIsMobileMenuOpen(false)}>
                   <User size={18} />
-                  <span className="text-sm">{currentUser.displayName || currentUser.email}</span>
+                  <span className="text-sm">{currentUser.user_metadata?.full_name || currentUser.email}</span>
                 </Link>
               ) : (
                 <>

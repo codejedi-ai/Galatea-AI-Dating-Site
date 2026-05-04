@@ -10,19 +10,19 @@ import { CircleLoader } from "@/components/loading-screen";
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { currentUser, loading } = useAuth();
   const router = useRouter();
-  const [showLoader, setShowLoader] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!loading) {
-      if (!currentUser) {
-        router.push("/sign-in");
-      } else {
-        setShowLoader(false);
-      }
-    }
-  }, [currentUser, loading, router]);
+    setMounted(true);
+  }, []);
 
-  if (loading || showLoader) {
+  useEffect(() => {
+    if (mounted && !loading && !currentUser) {
+      router.push("/sign-in");
+    }
+  }, [mounted, currentUser, loading, router]);
+
+  if (!mounted || loading) {
     return <CircleLoader />;
   }
 
