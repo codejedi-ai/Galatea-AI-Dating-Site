@@ -358,7 +358,7 @@ function CompanionCard({
       <div className="p-6">
         <h3 className="text-2xl font-semibold g-text-heading mb-2">{name}</h3>
         <p className="g-text-muted">{description}</p>
-        <Button className="mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:g-bg-accent-tint group-hover:g-bg-accent group-hover:g-text-accent-text transition-all duration-300">
+        <Button className="companion-card-btn mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:g-bg-accent-tint transition-all duration-300">
           Start Practicing with {name}
         </Button>
       </div>

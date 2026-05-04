@@ -342,10 +342,8 @@
   .hover\:g-bg-accent-tint:hover {
     background-color: var(--g-accent-tint);
   }
-  .group:hover .group-hover\:g-bg-accent {
+  .group:hover .companion-card-btn {
     background-color: var(--g-accent);
-  }
-  .group:hover .group-hover\:g-text-accent-text {
     color: var(--g-accent-text);
   }
   .hover\:g-border-card-hover:hover {
