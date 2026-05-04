@@ -12,27 +12,32 @@
   --g-nav-rgb: 254 252 235;
 
   /* --- Light theme solid colors --- */
-  --g-surface-alt: #E5D9C9;
-  --g-border: #D3C1A8;
-  --g-text: #342B18;
-  --g-muted: #7A5F36;
-  --g-subtle: #9D7945;
-  --g-accent: #E11D48;
-  --g-accent-hover: #BE123C;
-  --g-accent-text: #FFFFF0;
-  --g-footer: #E5D9C9;
-  --g-input-bg: #FEFAF4;
-  --g-input-border: #D3C1A8;
-  --g-loading-bg: #FFF8F0;
-  --g-loading-accent: #E11D48;
-  --g-loading-accent-2: #BE123C;
+  --g-surface-alt: #e5d9c9;
+  --g-border: #d3c1a8;
+  --g-text: #342b18;
+  --g-muted: #7a5f36;
+  --g-subtle: #9d7945;
+  --g-accent: #e11d48;
+  --g-accent-hover: #be123c;
+  --g-accent-text: #fffff0;
+  --g-footer: #e5d9c9;
+  --g-input-bg: #fefaf4;
+  --g-input-border: #d3c1a8;
+  --g-loading-bg: #fff8f0;
+  --g-loading-accent: #e11d48;
+  --g-loading-accent-2: #be123c;
   --g-card-hover-border: rgba(225, 29, 72, 0.3);
 
   /* --- Light theme gradients --- */
-  --g-gradient-page: linear-gradient(135deg, #FFFFF0, #FFF1F2, #E5D9C9);
-  --g-gradient-cta: linear-gradient(to right, #C1A987, #E5D9C9);
-  --g-gradient-hero: linear-gradient(to right, rgb(254 250 244 / 0.95), rgb(254 250 244 / 0.7), transparent);
-  --g-gradient-card: linear-gradient(to top, #E5D9C9, transparent, transparent);
+  --g-gradient-page: linear-gradient(135deg, #fffff0, #fff1f2, #e5d9c9);
+  --g-gradient-cta: linear-gradient(to right, #c1a987, #e5d9c9);
+  --g-gradient-hero: linear-gradient(
+    to right,
+    rgb(254 250 244 / 0.95),
+    rgb(254 250 244 / 0.7),
+    transparent
+  );
+  --g-gradient-card: linear-gradient(to top, #e5d9c9, transparent, transparent);
 
   /* --- Shadcn/ui compatibility vars --- */
   --background: 36 33% 97%;
@@ -91,7 +96,12 @@
   /* --- Dark theme gradients --- */
   --g-gradient-page: #000000;
   --g-gradient-cta: linear-gradient(to right, #1a1d24, #000000);
-  --g-gradient-hero: linear-gradient(to right, #000000, rgba(0, 0, 0, 0.8), transparent);
+  --g-gradient-hero: linear-gradient(
+    to right,
+    #000000,
+    rgba(0, 0, 0, 0.8),
+    transparent
+  );
   --g-gradient-card: linear-gradient(to top, #111318, transparent, transparent);
 
   /* --- Shadcn/ui compatibility vars --- */
@@ -140,6 +150,71 @@
     text-wrap: balance;
   }
 
+  /* Theme-aware background utilities */
+  .g-bg-page {
+    background-color: rgb(var(--g-page-rgb));
+  }
+
+  .g-bg-surface {
+    background-color: rgb(var(--g-surface-rgb));
+  }
+
+  .g-bg-nav {
+    background-color: rgb(var(--g-nav-rgb));
+  }
+
+  .g-bg-accent {
+    background-color: var(--g-accent);
+  }
+
+  .g-bg-accent-hover:hover {
+    background-color: var(--g-accent-hover);
+  }
+
+  /* Theme-aware text color utilities */
+  .g-text-primary {
+    color: var(--g-text);
+  }
+
+  .g-text-muted {
+    color: var(--g-muted);
+  }
+
+  .g-text-subtle {
+    color: var(--g-subtle);
+  }
+
+  .g-text-accent {
+    color: var(--g-accent);
+  }
+
+  .g-text-accent-text {
+    color: var(--g-accent-text);
+  }
+
+  /* Theme-aware border utilities */
+  .g-border-color {
+    border-color: var(--g-border);
+  }
+
+  .g-border-accent {
+    border-color: var(--g-accent);
+  }
+
+  /* Theme-aware input utilities */
+  .g-input-bg {
+    background-color: var(--g-input-bg);
+  }
+
+  .g-input-border {
+    border-color: var(--g-input-border);
+  }
+
+  .focus\:g-border-accent:focus {
+    border-color: var(--g-accent);
+  }
+
+  /* Gradient utilities */
   .g-page-gradient {
     background: var(--g-gradient-page);
   }

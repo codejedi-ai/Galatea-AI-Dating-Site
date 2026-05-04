@@ -1,71 +1,84 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { SparklesIcon, HeartIcon, ShieldCheckIcon } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Navbar } from "@/components/navbar"
-import { LoadingScreen } from "@/components/loading-screen"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { SparklesIcon, HeartIcon, ShieldCheckIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Navbar } from "@/components/navbar";
+import { LoadingScreen } from "@/components/loading-screen";
 
 type AIProfile = {
-  uuid: string
-  id: number
-  name: string
-  age: number
-  bio: string
-  imageUrl: string
-}
+  uuid: string;
+  id: number;
+  name: string;
+  age: number;
+  bio: string;
+  imageUrl: string;
+};
 
 const heroMessages = [
   { first: "Your AI Wingman for", second: "Confidence and Real Connections" },
   { first: "Helping You Talk to Humans", second: "(Without the Awkwardness)" },
   { first: "Boost Your Confidence,", second: "One Chat at a Time" },
-  { first: "Because Approaching People Shouldn't Feel Like", second: "a Mission Impossible" },
+  {
+    first: "Because Approaching People Shouldn't Feel Like",
+    second: "a Mission Impossible",
+  },
   { first: "Your Low-Key AI Buddy for", second: "Crushing Social Anxiety" },
   { first: "Helping You Slide Into", second: "DMs and Life Like a Pro" },
-  { first: "The AI Sidekick That's Got Your Back", second: "(And Your Confidence)" },
-]
+  {
+    first: "The AI Sidekick That's Got Your Back",
+    second: "(And Your Confidence)",
+  },
+];
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsVisible(false)
+      setIsVisible(false);
       setTimeout(() => {
-        setCurrentMessageIndex((prev) => (prev + 1) % heroMessages.length)
-        setIsVisible(true)
-      }, 300)
-    }, 3000)
+        setCurrentMessageIndex((prev) => (prev + 1) % heroMessages.length);
+        setIsVisible(true);
+      }, 300);
+    }, 3000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const handleStartSwiping = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      const response = await fetch("/api/init-swiping")
+      const response = await fetch("/api/init-swiping");
       if (!response.ok) {
-        throw new Error("Failed to initiate swiping")
+        throw new Error("Failed to initiate swiping");
       }
-      const profiles: AIProfile[] = await response.json()
-      router.push(`/start-swiping?profiles=${encodeURIComponent(JSON.stringify(profiles))}`)
+      const profiles: AIProfile[] = await response.json();
+      router.push(
+        `/start-swiping?profiles=${encodeURIComponent(JSON.stringify(profiles))}`,
+      );
     } catch (error) {
-      console.error("Error initiating swiping:", error)
-      setIsLoading(false)
+      console.error("Error initiating swiping:", error);
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {isLoading && <LoadingScreen message="Preparing your AI companions..." onComplete={() => setIsLoading(false)} />}
+    <div className="min-h-screen g-bg-page g-text-primary">
+      {isLoading && (
+        <LoadingScreen
+          message="Preparing your AI companions..."
+          onComplete={() => setIsLoading(false)}
+        />
+      )}
 
       <Navbar />
 
@@ -78,25 +91,26 @@ export default function Home() {
               alt="AI Companion"
               fill
               style={{ objectFit: "cover", objectPosition: "center" }}
-              className="opacity-40"
+              className="opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+            <div className="absolute inset-0 bg-black/30 dark:bg-black/60"></div>
           </div>
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-7xl font-bold mb-6">
-                Friends <span className="text-teal-400">Wanted</span>
+                Friends <span className="g-text-accent">Wanted</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-10">
-                Galatea.AI connects you with sophisticated AI companions designed for meaningful conversations,
-                emotional support, and intellectual engagement.
+              <p className="text-xl md:text-2xl g-text-muted mb-10">
+                Galatea.AI connects you with sophisticated AI companions
+                designed for meaningful conversations, emotional support, and
+                intellectual engagement.
               </p>
               <Button
                 onClick={handleStartSwiping}
                 disabled={isLoading}
                 size="lg"
-                className="bg-teal-500 text-black hover:bg-teal-400 text-lg px-8 py-6"
+                className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover text-lg px-8 py-6"
               >
                 {isLoading ? "Loading..." : "Start Swiping"}
               </Button>
@@ -105,45 +119,52 @@ export default function Home() {
         </section>
 
         {/* Dynamic Message Section */}
-        <section className="py-24 bg-gray-950">
+        <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
             <div className="text-center max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-bold mb-8 min-h-[120px] md:min-h-[160px] flex items-center justify-center">
                 <span
                   className={`transition-all duration-300 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
                   }`}
                 >
-                  <span className="text-white">{heroMessages[currentMessageIndex].first}</span>{" "}
-                  <span className="text-teal-400">{heroMessages[currentMessageIndex].second}</span>
+                  <span className="g-text-primary">
+                    {heroMessages[currentMessageIndex].first}
+                  </span>{" "}
+                  <span className="g-text-accent">
+                    {heroMessages[currentMessageIndex].second}
+                  </span>
                 </span>
               </h2>
-              <p className="text-xl text-gray-300 mb-10">
-                Galatea.AI helps you overcome social anxiety and build the confidence you need to make real friends.
+              <p className="text-xl g-text-muted mb-10">
+                Galatea.AI helps you overcome social anxiety and build the
+                confidence you need to make real friends.
               </p>
             </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="py-24 bg-black">
+        <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
-              Level Up Your <span className="text-teal-400">Social Game</span>
+              Level Up Your <span className="g-text-accent">Social Game</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-10">
               <FeatureCard
-                icon={<HeartIcon className="h-12 w-12 text-teal-400" />}
+                icon={<HeartIcon className="h-12 w-12 g-text-accent" />}
                 title="Confidence Building"
                 description="Practice conversations in a judgment-free zone and build the confidence to connect with real people."
               />
               <FeatureCard
-                icon={<SparklesIcon className="h-12 w-12 text-teal-400" />}
+                icon={<SparklesIcon className="h-12 w-12 g-text-accent" />}
                 title="Real-World Ready"
                 description="Get personalized tips and strategies that actually work in real social situations."
               />
               <FeatureCard
-                icon={<ShieldCheckIcon className="h-12 w-12 text-teal-400" />}
+                icon={<ShieldCheckIcon className="h-12 w-12 g-text-accent" />}
                 title="Your Safe Space"
                 description="A supportive environment where you can be yourself and grow at your own pace."
               />
@@ -152,10 +173,11 @@ export default function Home() {
         </section>
 
         {/* Showcase Section */}
-        <section className="py-24 bg-gray-950">
+        <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
-              Meet Your <span className="text-teal-400">Confidence Coaches</span>
+              Meet Your{" "}
+              <span className="g-text-accent">Confidence Coaches</span>
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -179,10 +201,10 @@ export default function Home() {
         </section>
 
         {/* Process Section */}
-        <section className="py-24 bg-black">
+        <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-16">
-              How It <span className="text-teal-400">Works</span>
+              How It <span className="g-text-accent">Works</span>
             </h2>
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
@@ -195,10 +217,10 @@ export default function Home() {
                     "Apply your new skills to real-world connections",
                   ].map((step, index) => (
                     <li key={index} className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-teal-500 text-black flex items-center justify-center font-bold">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full g-bg-accent g-text-accent-text flex items-center justify-center font-bold">
                         {index + 1}
                       </div>
-                      <p className="text-lg text-gray-300 pt-1">{step}</p>
+                      <p className="text-lg g-text-muted pt-1">{step}</p>
                     </li>
                   ))}
                 </ol>
@@ -218,17 +240,18 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-r from-gray-900 to-black">
+        <section className="py-24 g-bg-page">
           <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-bold mb-8">
-              Ready to <span className="text-teal-400">Make Friends</span>?
+              Ready to <span className="g-text-accent">Make Friends</span>?
             </h2>
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-              Join thousands who've already boosted their social confidence and built meaningful friendships.
+            <p className="text-xl g-text-muted mb-10 max-w-2xl mx-auto">
+              Join thousands who've already boosted their social confidence and
+              built meaningful friendships.
             </p>
             <Button
               size="lg"
-              className="bg-teal-500 text-black hover:bg-teal-400 text-xl py-6 px-10"
+              className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover text-xl py-6 px-10"
               onClick={handleStartSwiping}
               disabled={isLoading}
             >
@@ -238,7 +261,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-gray-950 border-t border-gray-800">
+      <footer className="g-bg-page border-t g-border-color">
         <div className="container mx-auto px-6 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
@@ -254,23 +277,34 @@ export default function Home() {
                   Galatea<span className="text-teal-400">.AI</span>
                 </span>
               </Link>
-              <p className="text-gray-400">Your AI wingman for building confidence and making real friends.</p>
+              <p className="text-gray-400">
+                Your AI wingman for building confidence and making real friends.
+              </p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/about"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/careers" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/careers"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Careers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/blog" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/blog"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Blog
                   </Link>
                 </li>
@@ -280,17 +314,26 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/help" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/help"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Help Center
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faq" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/faq"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <Link href="/community" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/community"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Community
                   </Link>
                 </li>
@@ -300,17 +343,26 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-4">Legal</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/privacy" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/privacy"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/terms"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-teal-400">
+                  <Link
+                    href="/contact"
+                    className="text-gray-400 hover:text-teal-400"
+                  >
                     Contact Us
                   </Link>
                 </li>
@@ -323,20 +375,38 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 transition-transform hover:scale-105 hover:border-teal-500/30">
       <div className="flex justify-center mb-6">{icon}</div>
-      <h3 className="text-2xl font-semibold text-white mb-4 text-center">{title}</h3>
+      <h3 className="text-2xl font-semibold text-white mb-4 text-center">
+        {title}
+      </h3>
       <p className="text-gray-300 text-center">{description}</p>
     </div>
-  )
+  );
 }
 
-function CompanionCard({ image, name, description }: { image: string; name: string; description: string }) {
+function CompanionCard({
+  image,
+  name,
+  description,
+}: {
+  image: string;
+  name: string;
+  description: string;
+}) {
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden transition-transform hover:scale-105 hover:border-teal-500/30 group">
       <div className="relative h-80">
@@ -356,5 +426,5 @@ function CompanionCard({ image, name, description }: { image: string; name: stri
         </Button>
       </div>
     </div>
-  )
+  );
 }
