@@ -299,9 +299,9 @@ export default function Profile() {
                 </Card>
               )}
 
-              <Card className="g-bg-card border border-red-500/50">
+              <Card className="g-bg-card border g-border-danger-faded">
                 <CardHeader>
-                  <CardTitle className="text-red-500">Danger Zone</CardTitle>
+                  <CardTitle className="g-text-danger">Danger Zone</CardTitle>
                   <CardDescription className="g-text-muted">
                     Actions that affect your account permanently.
                   </CardDescription>

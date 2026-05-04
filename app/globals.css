@@ -27,9 +27,14 @@
   --g-card-bg: #fdf6ed;
   --g-card-border: #d3c1a8;
   --g-loading-bg: #fff8f0;
+  --g-loading-track: #fde8ed;
   --g-loading-accent: #e11d48;
   --g-loading-accent-2: #be123c;
   --g-card-hover-border: rgba(225, 29, 72, 0.3);
+  --g-accent-tint: rgba(225, 29, 72, 0.1);
+  --g-danger: #dc2626;
+  --g-danger-hover: #b91c1c;
+  --g-danger-tint: rgba(220, 38, 38, 0.1);
   --g-error-bg: rgba(220, 38, 38, 0.1);
   --g-error-border: rgba(220, 38, 38, 0.5);
   --g-error-text: #dc2626;
@@ -101,9 +106,14 @@
   --g-card-bg: #111318;
   --g-card-border: #1a1d24;
   --g-loading-bg: #0a1520;
+  --g-loading-track: #0a2535;
   --g-loading-accent: #2de2e6;
   --g-loading-accent-2: #0d92ba;
   --g-card-hover-border: rgba(0, 196, 240, 0.3);
+  --g-accent-tint: rgba(0, 196, 240, 0.1);
+  --g-danger: #ef4444;
+  --g-danger-hover: #dc2626;
+  --g-danger-tint: rgba(239, 68, 68, 0.1);
   --g-error-bg: rgba(220, 38, 38, 0.12);
   --g-error-border: rgba(220, 38, 38, 0.4);
   --g-error-text: #f87171;
@@ -286,5 +296,75 @@
   }
   .g-bg-footer-gradient {
     background: linear-gradient(to top, var(--g-surface-alt), transparent);
+  }
+
+  /* Loading screen utilities */
+  .g-bg-loading {
+    background-color: var(--g-loading-bg);
+  }
+  .g-text-loading-accent {
+    color: var(--g-loading-accent);
+  }
+  .g-border-loading-accent {
+    border-color: var(--g-loading-accent);
+  }
+  .g-border-loading-accent-2 {
+    border-color: var(--g-loading-accent-2);
+  }
+  .g-bg-loading-track {
+    background-color: var(--g-loading-track);
+  }
+  .g-bg-loading-bar {
+    background: linear-gradient(to right, var(--g-loading-accent), var(--g-loading-accent-2));
+  }
+  .g-bg-loading-shimmer {
+    background: linear-gradient(to right, var(--g-loading-bg), var(--g-loading-accent), var(--g-loading-bg));
+  }
+
+  /* Danger / destructive */
+  .g-text-danger {
+    color: var(--g-danger);
+  }
+  .g-border-danger {
+    border-color: var(--g-danger);
+  }
+  .g-border-danger-faded {
+    border-color: color-mix(in srgb, var(--g-danger) 50%, transparent);
+  }
+  .hover\:g-bg-danger-tint:hover {
+    background-color: var(--g-danger-tint);
+  }
+  .hover\:g-text-danger-hover:hover {
+    color: var(--g-danger-hover);
+  }
+
+  /* Accent tint / interactive states */
+  .hover\:g-bg-accent-tint:hover {
+    background-color: var(--g-accent-tint);
+  }
+  .group:hover .group-hover\:g-bg-accent {
+    background-color: var(--g-accent);
+  }
+  .group:hover .group-hover\:g-text-accent-text {
+    color: var(--g-accent-text);
+  }
+  .hover\:g-border-card-hover:hover {
+    border-color: var(--g-card-hover-border);
+  }
+  /* Checkbox checked accent */
+  .g-checkbox[data-state="checked"] {
+    background-color: var(--g-accent);
+    border-color: var(--g-accent);
+  }
+
+  /* Nav scrolled background */
+  .g-bg-nav-scrolled {
+    background-color: rgb(var(--g-nav-rgb) / 0.6);
+  }
+  .g-bg-nav-mobile {
+    background-color: rgb(var(--g-nav-rgb) / 0.9);
+  }
+  .g-bg-page-faded {
+    background-color: rgb(var(--g-page-rgb) / 0.2);
   }
 }

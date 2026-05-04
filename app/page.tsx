@@ -325,7 +325,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="g-bg-card border g-border-card rounded-lg p-8 transition-transform hover:scale-105 hover:border-[var(--g-card-hover-border)]">
+    <div className="g-bg-card border g-border-card rounded-lg p-8 transition-transform hover:scale-105 hover:g-border-card-hover">
       <div className="flex justify-center mb-6">{icon}</div>
       <h3 className="text-2xl font-semibold g-text-heading mb-4 text-center">
         {title}
@@ -345,7 +345,7 @@ function CompanionCard({
   description: string;
 }) {
   return (
-    <div className="g-bg-card border g-border-card rounded-lg overflow-hidden transition-transform hover:scale-105 hover:border-[var(--g-card-hover-border)] group">
+    <div className="g-bg-card border g-border-card rounded-lg overflow-hidden transition-transform hover:scale-105 hover:g-border-card-hover group">
       <div className="relative h-80">
         <Image
           src={image || "/placeholder.svg"}
@@ -358,7 +358,7 @@ function CompanionCard({
       <div className="p-6">
         <h3 className="text-2xl font-semibold g-text-heading mb-2">{name}</h3>
         <p className="g-text-muted">{description}</p>
-        <Button className="mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:bg-[var(--g-accent)]/10 group-hover:bg-[var(--g-accent)] group-hover:text-[var(--g-accent-text)] transition-all duration-300">
+        <Button className="mt-4 w-full bg-transparent border g-border-accent g-text-accent hover:g-bg-accent-tint group-hover:g-bg-accent group-hover:g-text-accent-text transition-all duration-300">
           Start Practicing with {name}
         </Button>
       </div>

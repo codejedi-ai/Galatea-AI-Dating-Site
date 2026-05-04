@@ -101,7 +101,7 @@ function StartSwipingContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen g-bg-page flex flex-col items-center justify-center text-red-500">
+      <div className="min-h-screen g-bg-page flex flex-col items-center justify-center g-text-danger">
         <p className="mb-4">{error}</p>
         <Button onClick={() => window.location.reload()} className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover">
           Try Again
@@ -175,7 +175,7 @@ function StartSwipingContent() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full p-4 border-red-500 text-red-500 hover:bg-red-500/10 hover:text-red-400"
+                  className="rounded-full p-4 g-border-danger g-text-danger hover:g-bg-danger-tint hover:g-text-danger-hover"
                   onClick={() => handleDecision("rejected")}
                 >
                   <X className="h-8 w-8" />
@@ -184,7 +184,7 @@ function StartSwipingContent() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full p-4 g-border-accent g-text-accent hover:bg-[var(--g-accent)]/10"
+                  className="rounded-full p-4 g-border-accent g-text-accent hover:g-bg-accent-tint"
                   onClick={() => handleDecision("accepted")}
                 >
                   <Heart className="h-8 w-8" />

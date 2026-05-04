@@ -152,7 +152,7 @@ export default function SignIn() {
                 id="remember"
                 checked={rememberMe}
                 onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-                className="g-input-border data-[state=checked]:bg-[var(--g-accent)]"
+                className="g-input-border g-checkbox"
               />
               <Label htmlFor="remember" className="text-sm g-text-muted">
                 Remember me for 30 days

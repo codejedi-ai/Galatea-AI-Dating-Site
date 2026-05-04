@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Navbar } from "@/components/navbar";
-import { EyeIcon, EyeOffIcon, CheckCircleIcon } from "lucide-react";
+import { Eye as EyeIcon, EyeOff as EyeOffIcon, CircleCheck as CheckCircleIcon } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
 import { SimpleCircleLoader } from "@/components/loading-screen";
 
@@ -205,7 +205,7 @@ export default function SignUp() {
                 id="terms"
                 checked={agreedToTerms}
                 onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
-                className="g-input-border data-[state=checked]:bg-[var(--g-accent)] mt-1"
+                className="g-input-border g-checkbox mt-1"
                 required
               />
               <Label htmlFor="terms" className="text-sm g-text-muted">
