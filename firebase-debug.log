@@ -1,0 +1,62 @@
+[debug] [2025-06-15T00:22:12.307Z] ----------------------------------------------------------------------
+[debug] [2025-06-15T00:22:12.309Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\darcy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2025-06-15T00:22:12.310Z] CLI Version:   14.6.0
+[debug] [2025-06-15T00:22:12.310Z] Platform:      win32
+[debug] [2025-06-15T00:22:12.310Z] Node Version:  v22.14.0
+[debug] [2025-06-15T00:22:12.310Z] Time:          Sat Jun 14 2025 20:22:12 GMT-0400 (Eastern Daylight Saving Time)
+[debug] [2025-06-15T00:22:12.310Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-15T00:22:12.312Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-06-15T00:22:12.343Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-15T00:22:12.343Z] > authorizing via signed-in user (darcy.ldx@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\darcy\source\5-Galatea-AI\Galatea-ai
+
+[debug] [2025-06-15T00:22:12.446Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-06-15T00:22:12.447Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-06-15T00:22:15.209Z] Checked if tokens are valid: false, expires at: 1749233087877
+[debug] [2025-06-15T00:22:15.209Z] Checked if tokens are valid: false, expires at: 1749233087877
+[debug] [2025-06-15T00:22:15.210Z] > refreshing access token with scopes: []
+[debug] [2025-06-15T00:22:15.210Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-06-15T00:22:15.210Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-15T00:22:15.355Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-06-15T00:22:15.355Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-06-15T00:22:15.365Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-06-15T00:22:15.690Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-06-15T00:22:15.690Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project galatea-ai (galatea-ai) 
+[info] 
+=== Hosting Setup
+[debug] [2025-06-15T00:22:17.149Z] Checked if tokens are valid: true, expires at: 1749950534355
+[debug] [2025-06-15T00:22:17.149Z] Checked if tokens are valid: true, expires at: 1749950534355
+[debug] [2025-06-15T00:22:17.149Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/galatea-ai [none]
+[debug] [2025-06-15T00:22:17.319Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/galatea-ai 200
+[debug] [2025-06-15T00:22:17.319Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/galatea-ai {"projectId":"galatea-ai","projectNumber":"727737899444","displayName":"galatea-ai","name":"projects/galatea-ai","resources":{"hostingSite":"galatea-ai","realtimeDatabaseInstance":"galatea-ai-default-rtdb"},"state":"ACTIVE","etag":"1_3b12080c-9cd1-40c8-a32b-ee70225fcbc2"}
+[debug] [2025-06-15T00:22:28.612Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\darcy\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:101:37)
+    at Interface.emit (node:events:518:28)
+    at Interface.emit (node:domain:489:12)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1124:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:263:20)
+    at ReadStream.emit (node:events:530:35)
+    at ReadStream.emit (node:domain:489:12)
+    at emitKeys (node:internal/readline/utils:370:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+[error] 
+[error] Error: An unexpected error has occurred.

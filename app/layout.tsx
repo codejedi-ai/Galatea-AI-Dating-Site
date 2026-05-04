@@ -2,8 +2,10 @@ import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
 import { Inter } from "next/font/google"
-import { AuthProvider } from "@/contexts/auth-context" // Import AuthProvider
+import { AuthProvider } from "@/contexts/auth-context"
+import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@vercel/analytics/next"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -22,13 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-black text-white`}>
-        <AuthProvider>
-          {" "}
-          {/* Wrap with AuthProvider */}
-          {children}
-          <Analytics />
-        </AuthProvider>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <AuthProvider>
+            {children}
+            <Analytics />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
