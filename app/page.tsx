@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles as SparklesIcon, Heart as HeartIcon, ShieldCheck as ShieldCheckIcon } from "lucide-react";
 import Image from "next/image";
@@ -20,39 +20,9 @@ type AIProfile = {
   imageUrl: string;
 };
 
-const heroMessages = [
-  { first: "Your AI Wingman for", second: "Confidence and Real Connections" },
-  { first: "Helping You Talk to Humans", second: "(Without the Awkwardness)" },
-  { first: "Boost Your Confidence,", second: "One Chat at a Time" },
-  {
-    first: "Because Approaching People Shouldn't Feel Like",
-    second: "a Mission Impossible",
-  },
-  { first: "Your Low-Key AI Buddy for", second: "Crushing Social Anxiety" },
-  { first: "Helping You Slide Into", second: "DMs and Life Like a Pro" },
-  {
-    first: "The AI Sidekick That's Got Your Back",
-    second: "(And Your Confidence)",
-  },
-];
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible(false);
-      setTimeout(() => {
-        setCurrentMessageIndex((prev) => (prev + 1) % heroMessages.length);
-        setIsVisible(true);
-      }, 300);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const handleStartSwiping = async () => {
     setIsLoading(true);
@@ -114,34 +84,6 @@ export default function Home() {
               >
                 {isLoading ? "Loading..." : "Start Swiping"}
               </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Dynamic Message Section */}
-        <section className="py-24 g-bg-page">
-          <div className="container mx-auto px-6">
-            <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 min-h-[120px] md:min-h-[160px] flex items-center justify-center">
-                <span
-                  className={`transition-all duration-300 ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  }`}
-                >
-                  <span className="g-text-heading">
-                    {heroMessages[currentMessageIndex].first}
-                  </span>{" "}
-                  <span className="g-text-accent">
-                    {heroMessages[currentMessageIndex].second}
-                  </span>
-                </span>
-              </h2>
-              <p className="text-xl g-text-muted mb-10">
-                Galatea.AI helps you overcome social anxiety and build the
-                confidence you need to make real friends.
-              </p>
             </div>
           </div>
         </section>
