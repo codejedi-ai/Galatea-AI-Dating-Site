@@ -1,4 +1,7 @@
 {
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=512"
+  },
   "permissions": {
     "allow": [
       "Bash(npm run:*)",

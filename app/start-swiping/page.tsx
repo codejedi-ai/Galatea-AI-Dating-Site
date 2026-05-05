@@ -1,9 +1,8 @@
 "use client"
 
-import { Suspense, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heart, X } from "lucide-react"
@@ -23,7 +22,7 @@ interface SwipeDecision {
   [uuid: string]: "accepted" | "rejected"
 }
 
-function StartSwipingContent() {
+export default function StartSwiping() {
   const [profiles, setProfiles] = useState<AIProfile[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [decisions, setDecisions] = useState<SwipeDecision>({})
@@ -31,25 +30,13 @@ function StartSwipingContent() {
   const [error, setError] = useState<string | null>(null)
   const [swipeDirection, setSwipeDirection] = useState<string | null>(null)
 
-  const searchParams = useSearchParams()
-
   useEffect(() => {
-    const profilesParam = searchParams.get("profiles")
-    if (profilesParam) {
-      try {
-        const parsedProfiles = JSON.parse(decodeURIComponent(profilesParam)) as AIProfile[]
-        setProfiles(parsedProfiles)
-        setIsLoading(false)
-      } catch (err) {
-        setError("Failed to parse profiles. Please try again.")
-        setIsLoading(false)
-      }
-    } else {
-      initiateSwipe()
-    }
-  }, [searchParams])
+    initiateSwipe()
+  }, [])
 
   async function initiateSwipe() {
+    setIsLoading(true)
+    setError(null)
     try {
       const response = await fetch("/api/init-swiping")
       if (!response.ok) {
@@ -57,9 +44,11 @@ function StartSwipingContent() {
       }
       const data = await response.json()
       setProfiles(data)
-      setIsLoading(false)
+      setCurrentIndex(0)
+      setDecisions({})
     } catch (err) {
       setError("Failed to start swiping session. Please try again later.")
+    } finally {
       setIsLoading(false)
     }
   }
@@ -103,7 +92,7 @@ function StartSwipingContent() {
     return (
       <div className="min-h-screen g-bg-page flex flex-col items-center justify-center g-text-danger">
         <p className="mb-4">{error}</p>
-        <Button onClick={() => window.location.reload()} className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover">
+        <Button onClick={initiateSwipe} className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover">
           Try Again
         </Button>
       </div>
@@ -208,13 +197,5 @@ function StartSwipingContent() {
         </div>
       </footer>
     </div>
-  )
-}
-
-export default function StartSwiping() {
-  return (
-    <Suspense fallback={<LoadingScreen message="Loading your matches..." />}>
-      <StartSwipingContent />
-    </Suspense>
   )
 }

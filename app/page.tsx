@@ -1,55 +1,12 @@
-"use client";
-
-import type React from "react";
-
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles as SparklesIcon, Heart as HeartIcon, ShieldCheck as ShieldCheckIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Navbar } from "@/components/navbar";
-import { LoadingScreen } from "@/components/loading-screen";
-
-type AIProfile = {
-  uuid: string;
-  id: number;
-  name: string;
-  age: number;
-  bio: string;
-  imageUrl: string;
-};
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-
-  const handleStartSwiping = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/init-swiping");
-      if (!response.ok) {
-        throw new Error("Failed to initiate swiping");
-      }
-      const profiles: AIProfile[] = await response.json();
-      router.push(
-        `/start-swiping?profiles=${encodeURIComponent(JSON.stringify(profiles))}`,
-      );
-    } catch (error) {
-      console.error("Error initiating swiping:", error);
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen g-bg-page g-text-primary">
-      {isLoading && (
-        <LoadingScreen
-          message="Preparing your AI companions..."
-          onComplete={() => setIsLoading(false)}
-        />
-      )}
-
       <Navbar />
 
       <main>
@@ -77,12 +34,11 @@ export default function Home() {
                 intellectual engagement.
               </p>
               <Button
-                onClick={handleStartSwiping}
-                disabled={isLoading}
+                asChild
                 size="lg"
                 className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover text-lg px-8 py-6"
               >
-                {isLoading ? "Loading..." : "Start Swiping"}
+                <Link href="/start-swiping">Start Swiping</Link>
               </Button>
             </div>
           </div>
@@ -192,12 +148,11 @@ export default function Home() {
               built meaningful friendships.
             </p>
             <Button
+              asChild
               size="lg"
               className="g-bg-accent g-text-accent-text hover:g-bg-accent-hover text-xl py-6 px-10"
-              onClick={handleStartSwiping}
-              disabled={isLoading}
             >
-              {isLoading ? "Loading..." : "Start Building Confidence"}
+              <Link href="/start-swiping">Start Building Confidence</Link>
             </Button>
           </div>
         </section>
